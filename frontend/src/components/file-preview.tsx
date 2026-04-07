@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   Dialog,
   DialogContent,
@@ -52,11 +53,13 @@ export default function FilePreview({ file, isOpen, onClose }: FilePreviewProps)
 
           {isPreviewable ? (
             isImage ? (
-              <img
-                src={file.preview}
+              <Image
+                src={file.preview || ""}
                 alt={file.name}
                 className="max-w-full max-h-[calc(90vh-10rem)] object-contain"
                 onLoad={handleLoad}
+                width={800}
+                height={600}
               />
             ) : isPdf ? (
               <iframe
